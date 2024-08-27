@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Béton Expert - Votre partenaire en construction</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="lucrari/logo.png" alt="Béton Expert Logo">
+        </div>
+        <h1>Béton Expert</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="apropos.html">À propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="lucrari.html">Lucrări Recente</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="accueil" class="hero">
+            <img src="placeholder-hero.jpg" alt="Chantier de construction en béton">
+            <div class="hero-text">
+                <h2>Bienvenue chez Béton Expert</h2>
+                <p>Votre partenaire de confiance pour tous vos projets de construction en béton.</p>
+            </div>
+        </section>
+        <section id="lucrari-recente">
+            <h2>Lucrări Recente</h2>
+            <div class="lucrari-grid">
+                <img src="lucrari/lucrare2.jpg" alt="Lucrare 2" class="lucrare-img">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Béton Expert. Tous droits réservés.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var heroText = document.querySelector('.hero-text');
+            
+            setTimeout(function() {
+                heroText.classList.add('hidden');
+            }, 5000);
+        });
+    </script>
+
+</body>
+</html>
