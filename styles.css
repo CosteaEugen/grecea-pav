@@ -77,16 +77,20 @@ h1, h2 {
     color: var(--color-primary);
 }
 
-.hero {
+/* Stilizarea secțiunii de tip Hero */
+.hero-container {
     position: relative;
-    text-align: center;
-    color: var(--color-white);
+    display: block;
+    border-radius: 20px; /* Colțuri rotunde */
+    overflow: hidden; /* Aplică colțurile rotunde și pe imagine */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Umbră */
 }
 
-.hero img {
+.hero-img {
     width: 100%;
-    height: 400px;
-    object-fit: cover;
+    height: auto;
+    display: block;
+    border-radius: 20px; /* Colțuri rotunde pentru imagine */
 }
 
 .hero-text {
@@ -96,60 +100,86 @@ h1, h2 {
     transform: translate(-50%, -50%);
     background-color: rgba(26, 43, 60, 0.7);
     padding: 1rem;
-    transition: opacity 1s ease-out;
-}
-
-.hero-text.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.services, .lucrari-grid {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.service, .lucrare {
-    flex-basis: calc(50% - 1rem);
-    margin-bottom: 2rem;
-    background-color: var(--color-white);
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-}
-
-.service img, .lucrare img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-footer {
-    background-color: var(--color-primary);
+    border-radius: 10px;
     color: var(--color-white);
     text-align: center;
-    padding: 1rem;
-    margin-top: 2rem;
 }
 
-.cta-button {
-    background-color: var(--color-secondary);
-    color: var(--color-primary);
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    text-transform: uppercase;
+/* Stilizarea Slideshow-ului */
+.slideshow-container {
+    position: relative;
+    width: 80%; /* Lățimea slideshow-ului */
+    height: 600px; /* Înălțimea slideshow-ului pentru a crea forma dreptunghiulară */
+    margin: 20px auto; /* Centrarea slideshow-ului */
+    overflow: hidden;
+    border-radius: 20px; /* Colțuri rotunde */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Umbră */
+}
+
+.mySlides img {
+    width: 100%;
+    height: 100%; /* Asigură că imaginea ocupă întreaga înălțime a containerului */
+    object-fit: cover; /* Asigură că imaginea se potrivește în container fără a-și schimba proporțiile */
+    border-radius: 20px; /* Colțuri rotunde pentru imagini */
+}
+
+.prev, .next {
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 10px; /* Butoane mai mici */
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px; /* Dimensiune mai mică a butoanelor */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 50%; /* Colțuri rotunde la butoane */
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundal semitransparent pentru butoane */
 }
 
-.cta-button:hover {
-    background-color: #e6c200;
+.prev {
+    left: 10px;
 }
 
+.next {
+    right: 10px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Fundal la hover */
+    transform: scale(1.1); /* Mărire ușoară la hover */
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot.active, .dot:hover {
+    background-color: #717171;
+}
+
+.text {
+    color: #f2f2f2;
+    font-size: 18px; /* Diminuează dimensiunea textului pentru a se potrivi cu dimensiunea mai mică a slideshow-ului */
+    padding: 5px 10px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundal pentru text */
+    border-radius: 0 0 20px 20px; /* Colțuri rotunde jos pentru text */
+}
+
+/* Stiluri Media Queries */
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
@@ -161,146 +191,114 @@ footer {
     .service, .lucrare {
         flex-basis: 100%;
     }
-    /* Lightbox styles */
-    .lightbox {
-        display: none;
-        position: fixed;
-        z-index: 999;
-        padding-top: 100px;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0,0,0,0.9);
+}
+
+@media (min-width: 1024px) {
+    .slideshow-container {
+        max-width: 50%; /* Redu dimensiunea la 50% pe ecrane foarte mari */
     }
-    
-    .lightbox-content {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px;
+
+    .prev, .next {
+        font-size: 25px; /* Butoane puțin mai mari pe ecrane mari */
     }
-    
-    .lightbox .close {
-        position: absolute;
-        top: 15px;
-        right: 35px;
-        color: #f1f1f1;
-        font-size: 40px;
-        font-weight: bold;
-        transition: 0.3s;
-        cursor: pointer;
+
+    .text {
+        font-size: 20px; /* Text puțin mai mare pe ecrane mari */
     }
-    
-    .lightbox .close:hover,
-    .lightbox .close:focus {
-        color: #bbb;
-        text-decoration: none;
-        cursor: pointer;
-    }
-    
-    .lucrare-img {
-        cursor: pointer;
-        transition: 0.3s;
-    }
-    
-    .lucrare-img:hover {
-        opacity: 0.7;
-    }
-    @media (max-width: 768px) {
-        .lightbox {
-            padding-top: 50px;
-        }
-    
-        .lightbox-content {
-            width: 95%;
-        }
-    
-        .lightbox .close {
-            top: 10px;
-            right: 20px;
-            font-size: 30px;
-        }
-        .slideshow-container {
-            max-width: 500px;
-            position: relative;
-            margin: auto;
-          }
-          
-          .mySlides {
-            display: none;
-          }
-          
-          .lucrare-img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-          }
-          
-          .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            margin-top: -22px;
-            padding: 16px;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-          }
-          
-          .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-          }
-          
-          .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,0.8);
-          }
-          
-          .text {
-            color: #f2f2f2;
-            font-size: 15px;
-            padding: 8px 12px;
-            position: absolute;
-            bottom: 8px;
-            width: 100%;
-            text-align: center;
-            background-color: rgba(0,0,0,0.5);
-          }
-          
-          .dot-container {
-            text-align: center;
-            padding: 20px;
-          }
-          
-          .dot {
-            cursor: pointer;
-            height: 15px;
-            width: 15px;
-            margin: 0 2px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-          }
-          
-          .active, .dot:hover {
-            background-color: #717171;
-          }
-          
-          .fade {
-            animation-name: fade;
-            animation-duration: 1.5s;
-          }
-          
-          @keyframes fade {
-            from {opacity: .4}
-            to {opacity: 1}
-          }
-    }
+}
+/* Stiluri pentru grila de lucrări */
+.lucrari-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Se adaptează automat la dimensiunea ecranului */
+    gap: 20px; /* Spațiere între elemente */
+    margin-top: 20px; /* Spațiu deasupra grilei */
+}
+
+.lucrare {
+    background-color: var(--color-white);
+    border-radius: 10px; /* Colțuri rotunjite pentru fiecare element */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Umbră ușoară pentru a adăuga profunzime */
+    overflow: hidden; /* Colțurile rotunjite să fie aplicate și imaginilor */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animație la hover */
+}
+
+.lucrare:hover {
+    transform: translateY(-5px); /* Efect de ridicare la hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Umbra devine mai proeminentă la hover */
+}
+
+.lucrare-img {
+    width: 100%;
+    height: 200px; /* Înălțime fixă pentru imagini, păstrând aspectul consistent */
+    object-fit: cover; /* Asigură că imaginea se potrivește fără a se deforma */
+    border-bottom: 3px solid var(--color-primary); /* Linie de separare sub imagine */
+}
+
+.lucrare h3 {
+    color: var(--color-primary);
+    padding: 15px;
+    font-size: 1.25rem;
+    text-align: center; /* Aliniere centrată pentru titlul lucrării */
+}
+
+.lucrare p {
+    padding: 0 15px 15px 15px;
+    color: var(--color-text);
+    text-align: center; /* Aliniere centrată pentru descriere */
+}
+/* Lightbox styling */
+.lightbox {
+    display: none; /* Ascunde lightbox-ul implicit */
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundal negru transparent */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px; /* Colțuri rotunde pentru imagine */
+    object-fit: contain; /* Asigură că imaginea se potrivește în fereastră */
+}
+
+.lightbox .close, .lightbox .prev, .lightbox .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Fundal semitransparent pentru butoane */
+    color: white;
+    font-size: 2rem;
+    padding: 10px;
+    border-radius: 50%; /* Colțuri rotunde pentru butoane */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.lightbox .close {
+    top: 20px;
+    right: 20px;
+    transform: translateY(0);
+    padding: 5px 10px;
+    font-size: 1.5rem;
+}
+
+.lightbox .prev {
+    left: 20px;
+}
+
+.lightbox .next {
+    right: 20px;
+}
+
+.lightbox .close:hover, .lightbox .prev:hover, .lightbox .next:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Întunecă fundalul butoanelor la hover */
+    transform: scale(1.1); /* Mărește ușor butoanele la hover */
 }

@@ -1,62 +1,100 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM fully loaded');
     var lightbox = document.getElementById('lightbox');
-    console.log('Lightbox element:', lightbox);
     var lightboxImg = document.getElementById('lightbox-img');
-    console.log('Lightbox image element:', lightboxImg);
     var closeBtn = document.querySelector('.lightbox .close');
-    console.log('Close button:', closeBtn);
+    var prevBtn = document.createElement('div');
+    var nextBtn = document.createElement('div');
+
+    // Inițializare lightbox (ar trebui să fie ascuns la început)
+    lightbox.style.display = 'none';
+
+    // Creare butoane de navigare
+    prevBtn.classList.add('prev');
+    prevBtn.innerHTML = '&#10094;'; // Săgeată spre stânga
+    nextBtn.classList.add('next');
+    nextBtn.innerHTML = '&#10095;'; // Săgeată spre dreapta
+
+    lightbox.appendChild(prevBtn);
+    lightbox.appendChild(nextBtn);
 
     // Get all images with class 'lucrare-img'
     var images = document.getElementsByClassName('lucrare-img');
-    console.log('Number of images found:', images.length);
+    var currentIndex = 0;
+    var touchStartTime = 0;
+    var touchDelay = 200; // Delay de 200ms
 
-    // Function to open lightbox
-    function openLightbox(src) {
-        console.log('Opening lightbox with image:', src);
-        lightbox.style.display = 'block';
-        lightboxImg.src = src;
+    function openLightbox(index) {
+        currentIndex = index;
+        lightboxImg.src = images[currentIndex].src;
+        lightbox.style.display = 'flex';
     }
 
-    // Add click event to all images
-    for (var i = 0; i < images.length; i++) {
-        images[i].onclick = function() {
-            openLightbox(this.src);
+    function showImage(index) {
+        if (index >= 0 && index < images.length) {
+            lightboxImg.src = images[index].src;
+            currentIndex = index;
         }
-        // Add touch event for mobile devices
-        images[i].addEventListener('touchend', function(e) {
-            e.preventDefault();
-            openLightbox(this.src);
-        });
+    }
+
+    // Add click and touch events to all images
+    for (var i = 0; i < images.length; i++) {
+        (function(index) {
+            images[index].onclick = function() {
+                openLightbox(index);
+            };
+
+            // Add touch event for mobile devices with delay
+            images[index].addEventListener('touchstart', function() {
+                touchStartTime = Date.now();
+            });
+
+            images[index].addEventListener('touchend', function(e) {
+                e.preventDefault();
+                var touchDuration = Date.now() - touchStartTime;
+                if (touchDuration < touchDelay) {
+                    openLightbox(index);
+                }
+            });
+        })(i);
     }
 
     // Close lightbox when clicking on 'x'
     if (closeBtn) {
         closeBtn.onclick = function() {
-            console.log('Close button clicked');
             lightbox.style.display = 'none';
-        }
+        };
     }
 
     // Close lightbox when clicking outside the image
     lightbox.onclick = function(event) {
-        if (event.target == lightbox) {
-            console.log('Clicked outside image');
+        if (event.target === lightbox) {
             lightbox.style.display = 'none';
         }
-    }
+    };
 
-    // Add swipe down to close for touch devices
-    var touchStartY = 0;
+    // Show previous image
+    prevBtn.onclick = function() {
+        showImage(currentIndex - 1);
+    };
+
+    // Show next image
+    nextBtn.onclick = function() {
+        showImage(currentIndex + 1);
+    };
+
+    // Add swipe functionality for touch devices
+    var touchStartX = 0;
+
     lightbox.addEventListener('touchstart', function(e) {
-        touchStartY = e.touches[0].clientY;
+        touchStartX = e.touches[0].clientX;
     }, false);
 
     lightbox.addEventListener('touchend', function(e) {
-        var touchEndY = e.changedTouches[0].clientY;
-        if (touchEndY - touchStartY > 50) {
-            console.log('Swiped down');
-            lightbox.style.display = 'none';
+        var touchEndX = e.changedTouches[0].clientX;
+        if (touchEndX - touchStartX > 50) {
+            showImage(currentIndex - 1);
+        } else if (touchStartX - touchEndX > 50) {
+            showImage(currentIndex + 1);
         }
     }, false);
 });
