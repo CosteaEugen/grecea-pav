@@ -19,6 +19,7 @@ body {
     background-color: var(--color-background);
 }
 
+/* Header */
 header {
     background-color: var(--color-primary);
     color: var(--color-white);
@@ -36,6 +37,7 @@ header {
     max-height: 50px;
 }
 
+/* Navigare */
 nav {
     background-color: var(--color-primary);
     color: var(--color-white);
@@ -62,6 +64,7 @@ nav ul li a:hover {
     color: var(--color-secondary);
 }
 
+/* Secțiunea principală */
 main {
     padding: 2rem;
     max-width: 1200px;
@@ -191,6 +194,34 @@ h1, h2 {
     .service, .lucrare {
         flex-basis: 100%;
     }
+
+    .slideshow-container {
+        width: 100%; /* Slideshow-ul să ocupe toată lățimea ecranului */
+        height: auto; /* Înălțimea se ajustează automat pentru a păstra proporțiile */
+    }
+
+    .mySlides img {
+        height: auto; /* Păstrează proporțiile imaginilor */
+        border-radius: 20px; /* Colțuri rotunde pentru imagini */
+    }
+
+    .lightbox-content {
+        max-width: 95%;
+        max-height: 85%;
+    }
+
+    .lightbox .prev, .lightbox .next {
+        top: 50%;
+        font-size: 1.5rem; /* Butoane mai mici pentru mobil */
+        padding: 8px;
+    }
+
+    .lightbox .close {
+        top: 10px;
+        right: 10px;
+        font-size: 1.2rem;
+        padding: 5px;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -206,6 +237,7 @@ h1, h2 {
         font-size: 20px; /* Text puțin mai mare pe ecrane mari */
     }
 }
+
 /* Stiluri pentru grila de lucrări */
 .lucrari-grid {
     display: grid;
@@ -246,6 +278,7 @@ h1, h2 {
     color: var(--color-text);
     text-align: center; /* Aliniere centrată pentru descriere */
 }
+
 /* Lightbox styling */
 .lightbox {
     display: none; /* Ascunde lightbox-ul implicit */
