@@ -334,4 +334,116 @@ h1, h2 {
 .lightbox .close:hover, .lightbox .prev:hover, .lightbox .next:hover {
     background-color: rgba(0, 0, 0, 0.8); /* Întunecă fundalul butoanelor la hover */
     transform: scale(1.1); /* Mărește ușor butoanele la hover */
+}/* Container pentru secțiunea de servicii */
+.services-container {
+    background-color: var(--color-white);
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: 15px; /* Colțuri rotunjite */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Umbră pentru efect de profunzime */
+    max-width: 1200px; /* Lățime maximă pentru container */
+}
+
+.services-container h2 {
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Grilă flexibilă */
+    gap: 20px; /* Spațiere între servicii */
+}
+
+.service {
+    background-color: var(--color-background);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service:hover {
+    transform: translateY(-5px); /* Ridicare ușoară la hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Umbra devine mai proeminentă */
+}
+
+.service img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.service h3 {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.service p {
+    color: var(--color-text);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+/* Container pentru secțiunea "À propos de nous" */
+.about-container {
+    background-color: var(--color-white);
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: 15px; /* Colțuri rotunjite */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Umbră pentru efect de profunzime */
+    max-width: 1000px; /* Lățime maximă pentru container */
+}
+
+.about-container h2 {
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.about-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    text-align: justify;
+}
+
+.about-content p {
+    margin-bottom: 1.5rem;
+}
+/* Stiluri pentru secțiunea de contact */
+.contact-container {
+    background-color: var(--color-white);
+    padding: 2rem;
+    margin: 2rem auto;
+    border-radius: 10px; /* Colțuri rotunjite */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Umbră ușoară */
+    max-width: 800px; /* Lățime maximă pentru container */
+    text-align: center; /* Aliniere text centrata */
+}
+
+.contact-container h2 {
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+}
+
+.contact-container p {
+    font-size: 1.125rem;
+    margin: 1rem 0;
+}
+
+.contact-container a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-container a:hover {
+    text-decoration: underline;
 }
