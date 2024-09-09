@@ -86,7 +86,7 @@ h1, h2 {
     display: block;
     border-radius: 20px; /* Colțuri rotunde */
     overflow: hidden; /* Aplică colțurile rotunde și pe imagine */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Umbră */
+    box-shadow: 0 4px 8px rgba(234, 239, 204, 0.3); /* Umbră */
 }
 
 .hero-img {
@@ -101,10 +101,10 @@ h1, h2 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(26, 43, 60, 0.7);
+    background-color: rgba(248, 166, 94, 0.7);
     padding: 1rem;
     border-radius: 10px;
-    color: var(--color-white);
+    color: var(--color-black);
     text-align: center;
 }
 

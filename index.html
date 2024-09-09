@@ -27,12 +27,38 @@
     <main role="main">
         <section id="accueil" class="section hero">
             <div class="hero-container">
-                <img src="lucrari/placeholder-hero.jpg" alt="Chantier de construction en béton" class="hero-img">
-                <div class="hero-text">
-                    <h2>Bienvenue chez Béton Expert</h2>
-                    <p>Votre partenaire de confiance pour tous vos projets de construction en béton.</p>
-                </div>
-            </div>
+                <img src="lucrari/hero1.jpg" alt="Chantier de construction en béton" class="hero-img">
+               
+                <!DOCTYPE html>
+                <html lang="fr">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Béton Expert</title>
+                    <style>
+                        #hero-text {
+                            transition: opacity 1s ease;
+                        }
+                
+                        .hidden {
+                            opacity: 0;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div id="hero-text" class="hero-text">
+                        <h2>Bienvenue chez Béton Expert</h2>
+                        <h3>Votre partenaire de confiance pour tous vos projets de construction en béton.</h3>
+                    </div>
+                
+                    <script>
+                        setTimeout(function() {
+                            document.getElementById('hero-text').classList.add('hidden');
+                        }, 5000); // 5000 milisecunde = 5 secunde
+                    </script>
+                </body>
+                </html>
+                
         </section>
 
         <section id="lucrari-recente" class="section">
@@ -40,37 +66,37 @@
             <div class="slideshow-container">
                 <div class="mySlides fade">
                     <img src="lucrari/lucrare1.jpg" class="lucrare-img" alt="Lucrare 1">
-                    <div class="text">Proiect 1</div>
+                    
                 </div>
 
                 <div class="mySlides fade">
                     <img src="lucrari/lucrare2.jpg" class="lucrare-img" alt="Lucrare 2">
-                    <div class="text">Proiect 2</div>
+                   
                 </div>
 
                 <div class="mySlides fade">
                     <img src="lucrari/lucrare3.jpg" class="lucrare-img" alt="Lucrare 3">
-                    <div class="text">Proiect 3</div>
+                    
                 </div>
 
                 <div class="mySlides fade">
                     <img src="lucrari/beton20.jpg" class="lucrare-img" alt="Lucrare 4">
-                    <div class="text">Proiect 4</div>
+                    
                 </div>
 
                 <div class="mySlides fade">
                     <img src="lucrari/beton13.jpg" class="lucrare-img" alt="Lucrare 5">
-                    <div class="text">Proiect 5</div>
+                    
                 </div>
 
                 <div class="mySlides fade">
                     <img src="lucrari/beton15.jpg" class="lucrare-img" alt="Lucrare 6">
-                    <div class="text">Proiect 6</div>
+                    
                 </div>
 
                 <div class="mySlides fade">
                     <img src="lucrari/beton10.jpg" class="lucrare-img" alt="Lucrare 7">
-                    <div class="text">Proiect 7</div>
+                    
                 </div>
 
                 <a class="prev" onclick="plusSlides(-1)">❮</a>
